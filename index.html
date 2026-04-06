@@ -16,12 +16,13 @@
       --gray: #888;
     }
 
+    * { box-sizing: border-box; scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: 'Montserrat', sans-serif;
       background: var(--cream);
       color: var(--black);
-      overflow-x: hidden;
     }
 
     /* --- SIDEBAR NAV --- */
@@ -34,42 +35,30 @@
       left: 0;
       background-color: var(--black);
       overflow-x: hidden;
-      transition: 0.5s; /* Smooth slide effect */
-      padding-top: 60px;
+      transition: 0.5s;
+      padding-top: 80px;
     }
 
     .sidebar a {
-      padding: 15px 32px;
+      padding: 20px 32px;
       text-decoration: none;
-      font-size: 14px;
+      font-size: 13px;
       color: var(--white);
       display: block;
       transition: 0.3s;
-      letter-spacing: 3px;
+      letter-spacing: 4px;
       text-transform: uppercase;
-      font-weight: 300;
     }
 
-    .sidebar a:hover {
-      color: var(--gold);
-    }
+    .sidebar a:hover { color: var(--gold); }
 
-    .sidebar .close-btn {
+    .close-btn {
       position: absolute;
-      top: 10px;
+      top: 20px;
       right: 25px;
-      font-size: 36px;
-      margin-left: 50px;
+      font-size: 30px;
+      color: white;
       cursor: pointer;
-    }
-
-    .sidebar-header {
-      color: var(--gold);
-      padding: 0 32px 20px;
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      border-bottom: 1px solid #333;
-      margin-bottom: 20px;
     }
 
     /* --- TOP HEADER --- */
@@ -87,52 +76,62 @@
 
     .menu-trigger {
       cursor: pointer;
-      font-size: 20px;
+      font-size: 14px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      font-weight: 500;
     }
 
     .logo {
       font-family: 'Playfair Display', serif;
-      font-size: 24px;
-      letter-spacing: 6px;
+      font-size: 22px;
+      letter-spacing: 5px;
       text-transform: uppercase;
+      font-weight: 700;
     }
 
-    /* --- HERO --- */
-    .hero {
+    /* --- CONTENT SECTIONS --- */
+    .section-container {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
       text-align: center;
-      padding: 60px 20px;
     }
 
-    .hero h1 {
+    .section-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(30px, 5vw, 45px);
+      font-size: 36px;
+      margin-bottom: 20px;
       font-style: italic;
     }
 
-    /* --- GRID & SLIDERS --- */
+    /* --- MY STORY SECTION --- */
+    #story {
+      background: var(--white);
+      line-height: 1.8;
+    }
+
+    #story p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: #444;
+      font-weight: 300;
+    }
+
+    /* --- SHOE COLLECTION GRID --- */
     .collection-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 30px;
-      padding: 20px;
-      max-width: 1400px;
-      margin: 0 auto;
+      margin-top: 40px;
     }
 
     .shoe-card {
       background: var(--white);
       position: relative;
       border: 1px solid #f0f0f0;
-      transition: transform 0.3s ease;
     }
 
-    .shoe-card:hover {
-      transform: translateY(-5px);
-    }
-
+    /* 3-IMAGE SLIDER */
     .slider-container {
       width: 100%;
       height: 450px;
@@ -156,17 +155,16 @@
       object-fit: cover;
     }
 
-    /* --- PRICE SECTION --- */
+    /* PRICE BAR */
     .price-section {
       padding: 25px;
-      text-align: center;
       border-top: 1px solid #f8f8f8;
     }
 
     .shoe-name {
       font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      margin: 0 0 8px 0;
+      font-size: 18px;
+      margin-bottom: 5px;
     }
 
     .shoe-price {
@@ -174,15 +172,6 @@
       color: var(--gold);
       display: block;
       margin-bottom: 15px;
-      font-size: 18px;
-    }
-
-    .details {
-      font-size: 11px;
-      color: var(--gray);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      margin-bottom: 20px;
     }
 
     .buy-btn {
@@ -192,34 +181,21 @@
       background: var(--black);
       color: var(--white);
       text-decoration: none;
-      font-size: 11px;
+      font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: 0.3s;
     }
 
-    .buy-btn:hover {
-      background: var(--gold);
-    }
-
-    .badge {
-      position: absolute;
-      top: 15px;
-      left: 15px;
-      background: var(--black);
-      color: var(--white);
-      padding: 5px 12px;
-      font-size: 10px;
-      z-index: 5;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-    }
+    .buy-btn:hover { background: var(--gold); }
 
     footer {
       text-align: center;
-      padding: 100px 20px;
-      background: var(--white);
-      margin-top: 50px;
+      padding: 60px 20px;
+      background: var(--black);
+      color: var(--white);
+      letter-spacing: 3px;
+      font-size: 10px;
     }
 
   </style>
@@ -228,87 +204,82 @@
 
 <div id="mySidebar" class="sidebar">
   <span class="close-btn" onclick="closeNav()">&times;</span>
-  <div class="sidebar-header">Rare Steps Boutique</div>
-  
-  <a href="#home" onclick="closeNav()">The Collection</a>
-  <a href="#" onclick="closeNav()">What We Sell</a>
-  <a href="#" onclick="closeNav()">Our Authentication</a>
-  <a href="#" onclick="closeNav()">Jordan Archive</a>
-  <a href="#" onclick="closeNav()">Adidas Archive</a>
-  <a href="#" onclick="closeNav()">Designer Archive</a>
-  <a href="https://wa.me/96171499263" style="color: var(--gold);">WhatsApp Concierge</a>
+  <a href="#story" onclick="closeNav()">My Story</a>
+  <a href="#collection" onclick="closeNav()">Our Collections</a>
+  <a href="https://wa.me/96171499263" onclick="closeNav()">Inquiries</a>
 </div>
 
 <header>
   <div class="menu-trigger" onclick="openNav()">&#9776; Menu</div>
   <div class="logo">Rare Steps</div>
-  <div style="width: 50px;"></div> </header>
+  <div style="width: 50px;"></div>
+</header>
 
-<section class="hero" id="home">
-  <h1>Timeless Footwear</h1>
-  <p>Every piece hand-selected. Every silhouette authenticated.</p>
+<section id="story" class="section-container">
+  <h2 class="section-title">My Story</h2>
+  <p>
+    Rare Steps began with a passion for finding the unattainable. We believe that footwear isn't just about utility—it's a statement of identity. Our journey involves hunting for the rarest silhouettes and most pristine pre-loved pieces to ensure that your steps are as unique as your story.
+  </p>
 </section>
 
-<section class="collection-grid">
+<hr style="border: 0; border-top: 1px solid #eee; width: 80%;">
 
-  <div class="shoe-card">
-    <div class="badge">Limited</div>
-    <div class="slider-container">
-      <div class="slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1584735175315-9d58238a06c4?q=80&w=800"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?q=80&w=800"></div>
+<section id="collection" class="section-container">
+  <h2 class="section-title">Our Collections</h2>
+  <p style="font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--gray);">Swipe photos to see details</p>
+  
+  <div class="collection-grid">
+
+    <div class="shoe-card">
+      <div class="slider-container">
+        <div class="slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1584735175315-9d58238a06c4?q=80&w=800"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?q=80&w=800"></div>
+      </div>
+      <div class="price-section">
+        <h3 class="shoe-name">Jordan Retro High</h3>
+        <span class="shoe-price">$260.00</span>
+        <a href="https://wa.me/96171499263" class="buy-btn">Inquire via WhatsApp</a>
+      </div>
     </div>
-    <div class="price-section">
-      <h3 class="shoe-name">Jordan Retro Silhouette</h3>
-      <p class="details">Condition: Excellent • Size 38</p>
-      <span class="shoe-price">$260.00</span>
-      <a href="https://wa.me/96171499263" class="buy-btn">Order on WhatsApp</a>
+
+    <div class="shoe-card">
+      <div class="slider-container">
+        <div class="slide"><img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1600832248537-47c9af48485c?q=80&w=800"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=800"></div>
+      </div>
+      <div class="price-section">
+        <h3 class="shoe-name">Samba Archive OG</h3>
+        <span class="shoe-price">$145.00</span>
+        <a href="https://wa.me/96171499263" class="buy-btn">Inquire via WhatsApp</a>
+      </div>
     </div>
+
+    <div class="shoe-card">
+      <div class="slider-container">
+        <div class="slide"><img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=800"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800"></div>
+      </div>
+      <div class="price-section">
+        <h3 class="shoe-name">Limited Silhouette</h3>
+        <span class="shoe-price">$310.00</span>
+        <a href="https://wa.me/96171499263" class="buy-btn">Inquire via WhatsApp</a>
+      </div>
+    </div>
+
   </div>
-
-  <div class="shoe-card">
-    <div class="badge">Rare</div>
-    <div class="slider-container">
-      <div class="slide"><img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1600832248537-47c9af48485c?q=80&w=800"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=800"></div>
-    </div>
-    <div class="price-section">
-      <h3 class="shoe-name">Samba Archive OG</h3>
-      <p class="details">Condition: New • Size 37</p>
-      <span class="shoe-price">$135.00</span>
-      <a href="https://wa.me/96171499263" class="buy-btn">Order on WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="shoe-card">
-    <div class="badge">Curated</div>
-    <div class="slider-container">
-      <div class="slide"><img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=800"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800"></div>
-    </div>
-    <div class="price-section">
-      <h3 class="shoe-name">Classic Grey Edition</h3>
-      <p class="details">Limited Edition • Size 40</p>
-      <span class="shoe-price">$310.00</span>
-      <a href="https://wa.me/96171499263" class="buy-btn">Order on WhatsApp</a>
-    </div>
-  </div>
-
 </section>
 
 <footer>
-  <div style="font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 5px; margin-bottom: 20px;">RARE STEPS</div>
-  <p style="font-size: 11px; letter-spacing: 2px; color: var(--gray);">PREMIUM SNEAKER ARCHIVE</p>
+  RARE STEPS | 2026
 </footer>
 
 <script>
-  /* --- JAVASCRIPT FOR SIDEBAR --- */
   function openNav() {
     document.getElementById("mySidebar").style.width = "280px";
   }
-
   function closeNav() {
     document.getElementById("mySidebar").style.width = "0";
   }
