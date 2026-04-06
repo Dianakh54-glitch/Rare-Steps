@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RARE STEPS | The Exclusive Collection</title>
+  <title>RARE STEPS | Exclusive Footwear</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 
@@ -14,6 +14,7 @@
       --cream: #f9f7f2;
       --white: #ffffff;
       --gray: #888;
+      --light-gray: #f2f2f2;
     }
 
     * { box-sizing: border-box; scroll-behavior: smooth; }
@@ -104,20 +105,30 @@
       font-style: italic;
     }
 
-    /* --- MY STORY SECTION --- */
+    /* --- ENHANCED MY STORY SECTION WITH BACKGROUND --- */
     #story {
-      background: var(--white);
+      background: linear-gradient(rgba(249, 247, 242, 0.95), rgba(197, 160, 89, 0.2)), 
+                  url('https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=1600') no-repeat center center/cover;
       line-height: 1.8;
+      position: relative;
+      width: 100%;
+      max-width: 100%; /* Important override */
+      padding: 100px 20px;
     }
 
-    #story p {
+    /* Added container to restrict text width but keep full width background */
+    #story .story-content {
       max-width: 700px;
       margin: 0 auto;
-      color: #444;
-      font-weight: 300;
+      color: #333; /* Darkened slightly for contrast against new background */
+      font-weight: 400; /* Increased weight slightly for contrast */
+      background: rgba(255, 255, 255, 0.6); /* Semi-transparent background for text box */
+      padding: 40px;
+      border-radius: 5px;
+      backdrop-filter: blur(3px); /* Sophisticated slight blur behind the text */
     }
 
-    /* --- SHOE COLLECTION GRID --- */
+    /* --- COLLECTION GRID --- */
     .collection-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -129,6 +140,7 @@
       background: var(--white);
       position: relative;
       border: 1px solid #f0f0f0;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
     }
 
     /* 3-IMAGE SLIDER */
@@ -155,23 +167,60 @@
       object-fit: cover;
     }
 
-    /* PRICE BAR */
-    .price-section {
-      padding: 25px;
+    /* --- NEW CONDITION & PRICE SECTION --- */
+    .info-bar {
+      padding: 20px;
       border-top: 1px solid #f8f8f8;
+      text-align: left;
+    }
+
+    .shoe-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 10px;
     }
 
     .shoe-name {
       font-family: 'Playfair Display', serif;
       font-size: 18px;
-      margin-bottom: 5px;
+      margin: 0;
     }
 
-    .shoe-price {
+    .price-tag {
       font-weight: 700;
+      font-size: 16px;
+      color: var(--black);
+    }
+
+    .specs-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding: 10px 0;
+      border-top: 1px solid #f9f9f9;
+      border-bottom: 1px solid #f9f9f9;
+    }
+
+    .condition-box {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    .condition-score {
       color: var(--gold);
-      display: block;
-      margin-bottom: 15px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .size-box {
+      font-size: 11px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gray);
     }
 
     .buy-btn {
@@ -185,6 +234,7 @@
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: 0.3s;
+      text-align: center;
     }
 
     .buy-btn:hover { background: var(--gold); }
@@ -216,30 +266,38 @@
 </header>
 
 <section id="story" class="section-container">
-  <h2 class="section-title">My Story</h2>
-  <p>
-    Rare Steps began with a passion for finding the unattainable. We believe that footwear isn't just about utility—it's a statement of identity. Our journey involves hunting for the rarest silhouettes and most pristine pre-loved pieces to ensure that your steps are as unique as your story.
-  </p>
+  <div class="story-content">
+    <h2 class="section-title">My Story</h2>
+    <p>
+      Rare Steps began with a passion for finding the unattainable. We believe that footwear isn't just about utility—it's a statement of identity. Our journey involves hunting for the rarest silhouettes and most pristine pre-loved pieces.
+    </p>
+  </div>
 </section>
-
-<hr style="border: 0; border-top: 1px solid #eee; width: 80%;">
 
 <section id="collection" class="section-container">
   <h2 class="section-title">Our Collections</h2>
-  <p style="font-size: 12px; letter-spacing: 1px; text-transform: uppercase; color: var(--gray);">Swipe photos to see details</p>
   
   <div class="collection-grid">
 
     <div class="shoe-card">
       <div class="slider-container">
-        <div class="slide"><img src="IMG_3770.jpeg"></div>
-        <div class="slide"><img src="IMG_3771.jpeg"></div>
-        <div class="slide"><img src="IMG_3772.jpeg"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1584735175315-9d58238a06c4?q=80&w=800"></div>
+        <div class="slide"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?q=80&w=800"></div>
       </div>
-      <div class="price-section">
-        <h3 class="shoe-name">ADIDAS Falcon</h3>
-        <span class="shoe-price">$40$</span>
-        <a href="https://wa.me/96171499263" class="buy-btn">Inquire via WhatsApp</a>
+      
+      <div class="info-bar">
+        <div class="shoe-header">
+          <h3 class="shoe-name">Jordan Retro High</h3>
+          <span class="price-tag">$260</span>
+        </div>
+        
+        <div class="specs-row">
+          <div class="condition-box">Condition: <span class="condition-score">9.5/10</span></div>
+          <div class="size-box">Size: 38</div>
+        </div>
+
+        <a href="https://wa.me/96171499263" class="buy-btn">Request via WhatsApp</a>
       </div>
     </div>
 
@@ -249,10 +307,19 @@
         <div class="slide"><img src="https://images.unsplash.com/photo-1600832248537-47c9af48485c?q=80&w=800"></div>
         <div class="slide"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=800"></div>
       </div>
-      <div class="price-section">
-        <h3 class="shoe-name">Samba Archive OG</h3>
-        <span class="shoe-price">$145.00</span>
-        <a href="https://wa.me/96171499263" class="buy-btn">Inquire via WhatsApp</a>
+      
+      <div class="info-bar">
+        <div class="shoe-header">
+          <h3 class="shoe-name">Samba Archive OG</h3>
+          <span class="price-tag">$145</span>
+        </div>
+        
+        <div class="specs-row">
+          <div class="condition-box">Condition: <span class="condition-score">10/10</span></div>
+          <div class="size-box">Size: 37</div>
+        </div>
+
+        <a href="https://wa.me/96171499263" class="buy-btn">Request via WhatsApp</a>
       </div>
     </div>
 
@@ -262,10 +329,19 @@
         <div class="slide"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800"></div>
         <div class="slide"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800"></div>
       </div>
-      <div class="price-section">
-        <h3 class="shoe-name">Limited Silhouette</h3>
-        <span class="shoe-price">$310.00</span>
-        <a href="https://wa.me/96171499263" class="buy-btn">Inquire via WhatsApp</a>
+      
+      <div class="info-bar">
+        <div class="shoe-header">
+          <h3 class="shoe-name">Limited Silhouette</h3>
+          <span class="price-tag">$310</span>
+        </div>
+        
+        <div class="specs-row">
+          <div class="condition-box">Condition: <span class="condition-score">8.5/10</span></div>
+          <div class="size-box">Size: 40</div>
+        </div>
+
+        <a href="https://wa.me/96171499263" class="buy-btn">Request via WhatsApp</a>
       </div>
     </div>
 
@@ -284,9 +360,6 @@
     document.getElementById("mySidebar").style.width = "0";
   }
 </script>
-
-</body>
-</html>
 
 </body>
 </html>
