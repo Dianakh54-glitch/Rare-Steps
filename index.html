@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>RARE STEPS | The Collective – Interactive Curated Footwear</title>
+  <title>RARE STEPS | The Collective – Curated Footwear</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary-gold: #c5a059; /* Sophisticated muted gold */
+      --primary-gold: #c5a059;
       --deep-charcoal: #1a1a1a;
       --soft-cream: #f9f7f2;
       --white: #ffffff;
@@ -22,17 +22,17 @@
       background: var(--soft-cream);
       color: var(--deep-charcoal);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
-    /* Elegant Thin Header */
     header {
       background: var(--white);
-      padding: 30px 20px;
+      padding: 40px 20px;
       text-align: center;
       text-transform: uppercase;
-      letter-spacing: 6px;
+      letter-spacing: 8px;
       font-family: 'Playfair Display', serif;
-      font-size: 32px;
+      font-size: clamp(24px, 5vw, 36px);
       border-bottom: 1px solid #eee;
     }
 
@@ -47,215 +47,155 @@
     }
 
     nav a {
-      margin: 0 20px;
+      margin: 0 15px;
       text-decoration: none;
       color: var(--deep-charcoal);
       font-weight: 400;
-      font-size: 13px;
+      font-size: 11px;
       letter-spacing: 2px;
-      transition: color 0.3s ease;
+      transition: color 0.3s;
     }
 
-    nav a:hover {
-      color: var(--primary-gold);
-    }
-
-    /* Minimal Hero Section */
     .hero {
       text-align: center;
-      padding: 80px 20px 40px;
+      padding: 60px 20px;
       background: var(--white);
     }
 
     .hero h1 {
       font-family: 'Playfair Display', serif;
-      font-size: 48px;
-      font-weight: 700;
-      margin-bottom: 10px;
+      font-size: clamp(32px, 6vw, 52px);
       font-style: italic;
+      margin: 0;
     }
 
-    .hero p {
-      max-width: 600px;
-      margin: 0 auto 30px;
-      font-weight: 300;
-      letter-spacing: 1px;
-      color: #444;
-    }
-
-    /* THE MOSAIC COLLECTIVE SHOWCASE (Grid with Internal Sliders) */
+    /* THE MOSAIC COLLECTION */
     .collective {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* Default grid */
-      gap: 10px; /* Modern minimal gap */
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
       padding: 20px;
-      background: var(--white);
       max-width: 1600px;
       margin: 0 auto;
     }
 
-    /* Spanning patterns remain the same */
-    .span-2-2 { grid-column: span 2; grid-row: span 2; } /* Large Square */
-    .span-2-1 { grid-column: span 2; }                 /* Wide Rectangle */
-    .span-1-2 { grid-row: span 2; }                 /* Tall Rectangle */
+    /* Mosaic Spanning Patterns */
+    .span-2-2 { grid-column: span 2; grid-row: span 2; }
+    .span-2-1 { grid-column: span 2; }
+    .span-1-2 { grid-row: span 2; }
 
-    /* The Slider Container - This replaces the static div */
-    .collective-item-slider {
+    /* The Slider Frame */
+    .collective-item {
       position: relative;
-      overflow-x: auto; /* Required for horizontal scrolling */
-      overflow-y: hidden;
-      background: var(--subtle-gray);
-      border: 1px solid #eee; /* Subtle structure */
-      
-      /* Essential CSS for Snap Scrolling */
-      scroll-snap-type: x mandatory;
-      scrollbar-width: none; /* Hide scrollbar for clean look (Firefox) */
-      -ms-overflow-style: none; /* Hide scrollbar (IE/Edge) */
+      background: var(--white);
+      overflow: hidden;
+      border: 1px solid #f0f0f0;
     }
 
-    /* Hide scrollbar for Chrome/Safari */
-    .collective-item-slider::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* Inner Wrapper to hold the 3 images */
-    .slider-track {
+    /* Internal Image Slider */
+    .image-slider {
       display: flex;
-      width: 300%; /* Important: Must accommodate 3 full-width pictures */
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scrollbar-width: none; /* Firefox */
       height: 100%;
     }
 
-    /* Individual Image Frame */
-    .slide-frame {
-      width: 100%; /* Fills 100% of the PARENT (.collective-item-slider) */
-      height: 100%;
-      scroll-snap-align: center; /* Snap this frame to center when stopped */
-      position: relative;
-    }
+    .image-slider::-webkit-scrollbar { display: none; } /* Chrome/Safari */
 
-    .slide-frame img {
+    .image-slider img {
       width: 100%;
       height: 100%;
+      flex-shrink: 0;
       object-fit: cover;
-      display: block;
-      transition: transform 0.8s ease;
+      scroll-snap-align: start;
     }
 
-    /* Maintain subtle hover effect on the entire track */
-    .collective-item-slider:hover img {
-      transform: scale(1.02); /* Slight scale to indicate interaction */
-    }
-
-    /* Caption Overlay on Hover (Unified across the slider) */
-    .collection-overlay {
+    /* Price Tag - Always Visible & Elegant */
+    .price-tag {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      z-index: 10; /* Keep caption above images */
-      background: rgba(0,0,0,0.6);
-      color: white;
-      padding: 15px;
-      text-transform: uppercase;
-      font-size: 10px;
-      letter-spacing: 2px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      pointer-events: none; /* Let clicks pass through */
+      top: 15px;
+      left: 15px;
+      background: var(--white);
+      padding: 5px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      z-index: 10;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
-    .collective-item-slider:hover .collection-overlay {
-      opacity: 1;
-    }
-
-    /* Minimal Slider Indicators (Visual cue for extra pictures) */
-    .slider-nav {
+    /* Visual Slide Indicators (3 dots) */
+    .slide-dots {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 20px;
+      right: 15px;
       display: flex;
       gap: 5px;
-      z-index: 11;
+      z-index: 10;
     }
 
-    .slider-nav span {
-      display: block;
-      width: 6px;
-      height: 6px;
-      background: rgba(255,255,255,0.4);
+    .slide-dots span {
+      width: 5px;
+      height: 5px;
+      background: rgba(0,0,0,0.2);
       border-radius: 50%;
     }
 
-    /* THE ARCHIVE section (Detailed Catalog - We'll keep this clean and single-image) */
-    .products {
-      padding: 80px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
+    /* Hover Overlay */
+    .item-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 26, 26, 0.7);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.4s ease;
       text-align: center;
+      padding: 20px;
+      backdrop-filter: blur(2px);
     }
 
-    .products h2 {
+    .collective-item:hover .item-overlay {
+      opacity: 1;
+    }
+
+    .item-overlay h3 {
       font-family: 'Playfair Display', serif;
-      font-size: 36px;
-      margin-bottom: 50px;
+      font-size: 20px;
+      margin-bottom: 5px;
+    }
+
+    .item-overlay p {
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
+      margin-bottom: 15px;
     }
 
-    .product-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 40px;
-    }
-
-    .product-card {
-      background: var(--white);
-      padding: 0;
-      transition: transform 0.4s ease;
-      border-bottom: 2px solid transparent;
-    }
-
-    .product-card:hover {
-      transform: translateY(-10px);
-      border-bottom: 2px solid var(--primary-gold);
-    }
-
-    .product-image {
-      width: 100%;
-      height: 350px;
-      overflow: hidden;
-      background: var(--subtle-gray);
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s ease;
-    }
-
-    .product-card:hover img {
-      transform: scale(1.05);
-    }
-
-    .product-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      margin: 20px 0 5px;
-    }
-
-    .product-card p {
-      font-size: 14px;
-      color: #888;
-      margin-bottom: 20px;
+    .view-btn {
+      border: 1px solid white;
+      padding: 8px 20px;
+      font-size: 10px;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 2px;
+      text-decoration: none;
+      color: white;
+      transition: 0.3s;
     }
 
-    /* WhatsApp CTA Button */
+    .view-btn:hover {
+      background: white;
+      color: var(--deep-charcoal);
+    }
+
+    /* Global Button */
     .btn {
       display: inline-block;
-      padding: 18px 40px;
+      padding: 18px 45px;
       background: var(--deep-charcoal);
       color: var(--white);
       text-decoration: none;
@@ -263,39 +203,34 @@
       font-size: 12px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      transition: all 0.4s ease;
-      border: 1px solid var(--deep-charcoal);
-      margin-top: 30px;
+      transition: all 0.4s;
+      margin-top: 20px;
     }
 
     .btn:hover {
-      background: transparent;
-      color: var(--deep-charcoal);
+      background: var(--primary-gold);
     }
 
-    /* Footer */
     footer {
       text-align: center;
-      padding: 60px 20px;
+      padding: 80px 20px;
       background: var(--deep-charcoal);
       color: var(--white);
-      margin-top: 80px;
       font-size: 11px;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
     }
 
-    .footer-wa {
-      color: var(--primary-gold);
-      text-decoration: none;
-      display: block;
-      margin-top: 10px;
-    }
+    .footer-wa { color: var(--primary-gold); text-decoration: none; display: block; margin-top: 15px; }
 
-    /* Responsive adjustments */
-    @media (max-width: 900px) {
+    /* Responsive Grid */
+    @media (max-width: 1024px) {
       .collective { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .collective { grid-template-columns: 1fr; }
       .span-2-2, .span-2-1, .span-1-2 { grid-column: span 1; grid-row: span 1; }
+      .collective-item { height: 400px; }
     }
   </style>
 </head>
@@ -305,108 +240,104 @@
 <header>RARE STEPS</header>
 
 <nav>
-  <a href="#home">HOME</a>
-  <a href="#archive">THE ARCHIVE</a>
+  <a href="#home">COLLECTION</a>
   <a href="https://wa.me/96171499263">INQUIRIES</a>
+  <a href="https://wa.me/96171499263">ORDER</a>
 </nav>
 
 <section class="hero" id="home">
-  <h1>The Interactive Collective</h1>
-  <p>Our curated selection, now interactive. Scroll each frame to see the details.</p>
+  <h1>The Collection</h1>
+  <p style="font-weight: 300; letter-spacing: 1px;">Swipe through the archive. 12 curated pieces available now.</p>
 </section>
 
 <section class="collective">
-  <div class="collective-item-slider span-1-2">
-    <div class="slider-track">
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600" alt="Collective Item 1, Side A"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600" alt="Collective Item 1, Side B"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=600" alt="Collective Item 1, Side C"></div>
+
+  <div class="collective-item span-1-2">
+    <div class="price-tag">$240</div>
+    <div class="slide-dots"><span></span><span></span><span></span></div>
+    <div class="image-slider">
+      <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=800" alt="View 1">
+      <img src="https://images.unsplash.com/photo-1584735175315-9d58238a06c4?auto=format&fit=crop&w=800" alt="View 2">
+      <img src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=800" alt="View 3">
     </div>
-    <div class="slider-nav"><span></span><span></span><span></span></div>
-    <div class="collection-overlay">Archive Silhouette I (3 Views)</div>
+    <div class="item-overlay">
+      <h3>Air Jordan Retro</h3>
+      <p>Size 38 • Pristine</p>
+      <a href="https://wa.me/96171499263" class="view-btn">Inquire</a>
+    </div>
   </div>
 
-  <div class="collective-item-slider">
-    <div class="slider-track">
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=600" alt="Collective Item 2, Side A"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?auto=format&fit=crop&w=600" alt="Collective Item 2, Side B"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1511556842212-97e84f00993c?auto=format&fit=crop&w=600" alt="Collective Item 2, Side C"></div>
+  <div class="collective-item">
+    <div class="price-tag">$185</div>
+    <div class="slide-dots"><span></span><span></span><span></span></div>
+    <div class="image-slider">
+      <img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?auto=format&fit=crop&w=600" alt="View 1">
+      <img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600" alt="View 2">
+      <img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=600" alt="View 3">
     </div>
-    <div class="slider-nav"><span></span><span></span><span></span></div>
-    <div class="collection-overlay">Classic Jordan II</div>
+    <div class="item-overlay">
+      <h3>Classic Volt</h3>
+      <p>Size 37 • Rare</p>
+      <a href="https://wa.me/96171499263" class="view-btn">Inquire</a>
+    </div>
   </div>
 
-  <div class="collective-item-slider span-2-2">
-    <div class="slider-track">
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?auto=format&fit=crop&w=1200" alt="Collective Item 3, Side A"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1518002171953-a080ee81be44?auto=format&fit=crop&w=1200" alt="Collective Item 3, Side B"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1200" alt="Collective Item 3, Side C"></div>
+  <div class="collective-item span-2-2">
+    <div class="price-tag">$420</div>
+    <div class="slide-dots"><span></span><span></span><span></span></div>
+    <div class="image-slider">
+      <img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?auto=format&fit=crop&w=1000" alt="View 1">
+      <img src="https://images.unsplash.com/photo-1511556842212-97e84f00993c?auto=format&fit=crop&w=1000" alt="View 2">
+      <img src="https://images.unsplash.com/photo-1518002171953-a080ee81be44?auto=format&fit=crop&w=1000" alt="View 3">
     </div>
-    <div class="slider-nav"><span></span><span></span><span></span></div>
-    <div class="collection-overlay">The Rare High Top</div>
+    <div class="item-overlay">
+      <h3>Limited Edition High</h3>
+      <p>Collector's Piece • Size 39</p>
+      <a href="https://wa.me/96171499263" class="view-btn">Inquire</a>
+    </div>
   </div>
 
-  <div class="collective-item-slider">
-    <div class="slider-track">
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600" alt="Collective Item 4, Side A"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?auto=format&fit=crop&w=600" alt="Collective Item 4, Side B"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1539185441755-769473a23570?auto=format&fit=crop&w=600" alt="Collective Item 4, Side C"></div>
+  <div class="collective-item">
+    <div class="price-tag">$130</div>
+    <div class="slide-dots"><span></span><span></span><span></span></div>
+    <div class="image-slider">
+      <img src="https://images.unsplash.com/photo-1600832248537-47c9af48485c?auto=format&fit=crop&w=600" alt="View 1">
+      <img src="https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?auto=format&fit=crop&w=600" alt="View 2">
+      <img src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?auto=format&fit=crop&w=600" alt="View 3">
     </div>
-    <div class="slider-nav"><span></span><span></span><span></span></div>
-    <div class="collection-overlay">Samba Edit</div>
+    <div class="item-overlay">
+      <h3>Adidas Samba 'Archive'</h3>
+      <p>Size 37 • Minimal Wear</p>
+      <a href="https://wa.me/96171499263" class="view-btn">Inquire</a>
+    </div>
   </div>
 
-  <div class="collective-item-slider">
-    <div class="slider-track">
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=600" alt="Collective Item 5, Side A"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?auto=format&fit=crop&w=600" alt="Collective Item 5, Side B"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1518002171953-a080ee81be44?auto=format&fit=crop&w=600" alt="Collective Item 5, Side C"></div>
+  <div class="collective-item span-2-1">
+    <div class="price-tag">$290</div>
+    <div class="slide-dots"><span></span><span></span><span></span></div>
+    <div class="image-slider">
+      <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=1000" alt="View 1">
+      <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=1000" alt="View 2">
+      <img src="https://images.unsplash.com/photo-1595341595379-3351cc924373?auto=format&fit=crop&w=1000" alt="View 3">
     </div>
-    <div class="slider-nav"><span></span><span></span><span></span></div>
-    <div class="collection-overlay">Vintage Collector</div>
-  </div>
-
-  <div class="collective-item-slider span-2-1">
-    <div class="slider-track">
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1582588678413-dbf45f4823e9?auto=format&fit=crop&w=1200" alt="Collective Item 6, Side A"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?auto=format&fit=crop&w=1200" alt="Collective Item 6, Side B"></div>
-      <div class="slide-frame"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?auto=format&fit=crop&w=1200" alt="Collective Item 6, Side C"></div>
+    <div class="item-overlay">
+      <h3>The Neutral Silhouette</h3>
+      <p>Unworn • Size 40</p>
+      <a href="https://wa.me/96171499263" class="view-btn">Inquire</a>
     </div>
-    <div class="slider-nav"><span></span><span></span><span></span></div>
-    <div class="collection-overlay">The White Edition</div>
   </div>
 
 </section>
 
-<section style="text-align: center; background: white; padding-bottom: 80px;">
-  <p style="font-size: 13px; letter-spacing: 2px; text-transform: uppercase;">Discover the full story.</p>
+<section style="text-align: center; padding: 60px 20px;">
   <a class="btn" href="https://wa.me/96171499263" target="_blank">
-    Secure Your Pair (WhatsApp Concierge)
+    Contact WhatsApp Concierge
   </a>
 </section>
 
-<section class="products" id="archive">
-  <h2>The Archive</h2>
-
-  <div class="product-grid">
-    <div class="product-card">
-      <div class="product-image"><img src="https://images.unsplash.com/photo-1584735175315-9d58238a06c4?auto=format&fit=crop&w=600" alt="Jordan"></div>
-      <h3>Air Jordan 1</h3><p>Pristine • Size 38</p>
-    </div>
-    <div class="product-card">
-      <div class="product-image"><img src="https://images.unsplash.com/photo-1600832248537-47c9af48485c?auto=format&fit=crop&w=600" alt="Samba"></div>
-      <h3>Adidas Samba</h3><p>Limited • Size 37</p>
-    </div>
-    <div class="product-card">
-      <div class="product-image"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=600" alt="Vintage"></div>
-      <h3>Vintage Runner</h3><p>Rare • Size 39</p>
-    </div>
-  </div>
-</section>
-
 <footer>
-  <div>© 2026 RARE STEPS COLLECTIVE</div>
-  <a href="https://wa.me/96171499263" class="footer-wa">REQUEST ACCESS via WHATSAPP</a>
+  © 2026 RARE STEPS COLLECTIVE
+  <a href="https://wa.me/96171499263" class="footer-wa">Request Catalog Access</a>
 </footer>
 
 </body>
