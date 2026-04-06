@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RARE STEPS | Luxury Collection</title>
+  <title>RARE STEPS | The Exclusive Collection</title>
   
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 
@@ -13,6 +13,7 @@
       --black: #1a1a1a;
       --cream: #f9f7f2;
       --white: #ffffff;
+      --gray: #888;
     }
 
     body {
@@ -20,57 +21,133 @@
       font-family: 'Montserrat', sans-serif;
       background: var(--cream);
       color: var(--black);
+      overflow-x: hidden;
     }
 
+    /* --- SIDEBAR NAV --- */
+    .sidebar {
+      height: 100%;
+      width: 0;
+      position: fixed;
+      z-index: 2000;
+      top: 0;
+      left: 0;
+      background-color: var(--black);
+      overflow-x: hidden;
+      transition: 0.5s; /* Smooth slide effect */
+      padding-top: 60px;
+    }
+
+    .sidebar a {
+      padding: 15px 32px;
+      text-decoration: none;
+      font-size: 14px;
+      color: var(--white);
+      display: block;
+      transition: 0.3s;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 300;
+    }
+
+    .sidebar a:hover {
+      color: var(--gold);
+    }
+
+    .sidebar .close-btn {
+      position: absolute;
+      top: 10px;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+      cursor: pointer;
+    }
+
+    .sidebar-header {
+      color: var(--gold);
+      padding: 0 32px 20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      border-bottom: 1px solid #333;
+      margin-bottom: 20px;
+    }
+
+    /* --- TOP HEADER --- */
     header {
       background: var(--white);
-      padding: 40px 20px;
-      text-align: center;
-      text-transform: uppercase;
-      letter-spacing: 8px;
-      font-family: 'Playfair Display', serif;
-      font-size: 28px;
+      padding: 25px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       border-bottom: 1px solid #eee;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
     }
 
-    /* THE GRID */
+    .menu-trigger {
+      cursor: pointer;
+      font-size: 20px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+    }
+
+    /* --- HERO --- */
+    .hero {
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 5vw, 45px);
+      font-style: italic;
+    }
+
+    /* --- GRID & SLIDERS --- */
     .collection-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
       padding: 20px;
       max-width: 1400px;
       margin: 0 auto;
     }
 
-    /* THE SHOE FRAME */
     .shoe-card {
       background: var(--white);
       position: relative;
-      border: 1px solid #eee;
-      display: flex;
-      flex-direction: column;
+      border: 1px solid #f0f0f0;
+      transition: transform 0.3s ease;
     }
 
-    /* THE SLIDE SECTION */
+    .shoe-card:hover {
+      transform: translateY(-5px);
+    }
+
     .slider-container {
       width: 100%;
-      height: 400px; /* Fixed height for elegance */
-      overflow-x: auto; /* Enables sliding */
+      height: 450px;
+      overflow-x: auto;
       display: flex;
       scroll-snap-type: x mandatory;
-      scrollbar-width: none; /* Hides scrollbar Firefox */
+      scrollbar-width: none;
     }
 
-    .slider-container::-webkit-scrollbar {
-      display: none; /* Hides scrollbar Chrome/Safari */
-    }
+    .slider-container::-webkit-scrollbar { display: none; }
 
     .slide {
-      min-width: 100%; /* Each image takes full width of card */
+      min-width: 100%;
       height: 100%;
       scroll-snap-align: start;
-      position: relative;
     }
 
     .slide img {
@@ -79,61 +156,43 @@
       object-fit: cover;
     }
 
-    /* INDICATOR DOTS */
-    .dots {
-      position: absolute;
-      top: 15px;
-      right: 15px;
-      display: flex;
-      gap: 5px;
-      z-index: 5;
-    }
-
-    .dots span {
-      width: 6px;
-      height: 6px;
-      background: rgba(0,0,0,0.3);
-      border-radius: 50%;
-    }
-
-    /* PRICE SECTION (Dedicated Bar) */
+    /* --- PRICE SECTION --- */
     .price-section {
-      padding: 20px;
-      background: var(--white);
-      border-top: 1px solid #f0f0f0;
+      padding: 25px;
       text-align: center;
+      border-top: 1px solid #f8f8f8;
     }
 
     .shoe-name {
       font-family: 'Playfair Display', serif;
-      font-size: 18px;
-      margin: 0 0 5px 0;
-      text-transform: capitalize;
+      font-size: 20px;
+      margin: 0 0 8px 0;
     }
 
-    .shoe-info {
-      font-size: 11px;
-      letter-spacing: 1px;
-      color: #888;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .price-amount {
+    .shoe-price {
       font-weight: 700;
-      font-size: 16px;
-      color: var(--black);
+      color: var(--gold);
       display: block;
       margin-bottom: 15px;
+      font-size: 18px;
+    }
+
+    .details {
+      font-size: 11px;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
     }
 
     .buy-btn {
       display: inline-block;
-      padding: 10px 25px;
+      width: 100%;
+      padding: 15px 0;
       background: var(--black);
-      color: white;
+      color: var(--white);
       text-decoration: none;
-      font-size: 10px;
+      font-size: 11px;
       letter-spacing: 2px;
       text-transform: uppercase;
       transition: 0.3s;
@@ -143,96 +202,117 @@
       background: var(--gold);
     }
 
-    footer {
-      text-align: center;
-      padding: 60px;
-      background: var(--black);
-      color: white;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      font-size: 10px;
-    }
-
-    /* Visual Tag for "New" or "Rare" */
     .badge {
       position: absolute;
       top: 15px;
       left: 15px;
-      background: var(--gold);
-      color: white;
-      padding: 4px 10px;
-      font-size: 9px;
-      letter-spacing: 1px;
+      background: var(--black);
+      color: var(--white);
+      padding: 5px 12px;
+      font-size: 10px;
       z-index: 5;
       text-transform: uppercase;
+      letter-spacing: 1px;
     }
+
+    footer {
+      text-align: center;
+      padding: 100px 20px;
+      background: var(--white);
+      margin-top: 50px;
+    }
+
   </style>
 </head>
 <body>
 
-<header>RARE STEPS</header>
+<div id="mySidebar" class="sidebar">
+  <span class="close-btn" onclick="closeNav()">&times;</span>
+  <div class="sidebar-header">Rare Steps Boutique</div>
+  
+  <a href="#home" onclick="closeNav()">The Collection</a>
+  <a href="#" onclick="closeNav()">What We Sell</a>
+  <a href="#" onclick="closeNav()">Our Authentication</a>
+  <a href="#" onclick="closeNav()">Jordan Archive</a>
+  <a href="#" onclick="closeNav()">Adidas Archive</a>
+  <a href="#" onclick="closeNav()">Designer Archive</a>
+  <a href="https://wa.me/96171499263" style="color: var(--gold);">WhatsApp Concierge</a>
+</div>
+
+<header>
+  <div class="menu-trigger" onclick="openNav()">&#9776; Menu</div>
+  <div class="logo">Rare Steps</div>
+  <div style="width: 50px;"></div> </header>
+
+<section class="hero" id="home">
+  <h1>Timeless Footwear</h1>
+  <p>Every piece hand-selected. Every silhouette authenticated.</p>
+</section>
 
 <section class="collection-grid">
 
   <div class="shoe-card">
+    <div class="badge">Limited</div>
+    <div class="slider-container">
+      <div class="slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1584735175315-9d58238a06c4?q=80&w=800"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?q=80&w=800"></div>
+    </div>
+    <div class="price-section">
+      <h3 class="shoe-name">Jordan Retro Silhouette</h3>
+      <p class="details">Condition: Excellent • Size 38</p>
+      <span class="shoe-price">$260.00</span>
+      <a href="https://wa.me/96171499263" class="buy-btn">Order on WhatsApp</a>
+    </div>
+  </div>
+
+  <div class="shoe-card">
     <div class="badge">Rare</div>
-    <div class="dots"><span></span><span></span><span></span></div>
-    
     <div class="slider-container">
-      <div class="slide"><img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?q=80&w=800" alt="View 1"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1584735175315-9d58238a06c4?q=80&w=800" alt="View 2"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1512374382149-233c42b6a83b?q=80&w=800" alt="View 3"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1600832248537-47c9af48485c?q=80&w=800"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=800"></div>
     </div>
-
     <div class="price-section">
-      <h3 class="shoe-name">Jordan Retro High</h3>
-      <p class="shoe-info">Condition: 9/10 • Size 38</p>
-      <span class="price-amount">$280.00</span>
-      <a href="https://wa.me/96171499263" class="buy-btn">Order via WhatsApp</a>
+      <h3 class="shoe-name">Samba Archive OG</h3>
+      <p class="details">Condition: New • Size 37</p>
+      <span class="shoe-price">$135.00</span>
+      <a href="https://wa.me/96171499263" class="buy-btn">Order on WhatsApp</a>
     </div>
   </div>
 
   <div class="shoe-card">
-    <div class="badge">New Arrival</div>
-    <div class="dots"><span></span><span></span><span></span></div>
-    
+    <div class="badge">Curated</div>
     <div class="slider-container">
-      <div class="slide"><img src="https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?q=80&w=800" alt="View 1"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?q=80&w=800" alt="View 2"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1600832248537-47c9af48485c?q=80&w=800" alt="View 3"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=800"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800"></div>
+      <div class="slide"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800"></div>
     </div>
-
     <div class="price-section">
-      <h3 class="shoe-name">Adidas Samba OG</h3>
-      <p class="shoe-info">Condition: New • Size 37</p>
-      <span class="price-amount">$145.00</span>
-      <a href="https://wa.me/96171499263" class="buy-btn">Order via WhatsApp</a>
-    </div>
-  </div>
-
-  <div class="shoe-card">
-    <div class="badge">Collector</div>
-    <div class="dots"><span></span><span></span><span></span></div>
-    
-    <div class="slider-container">
-      <div class="slide"><img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=800" alt="View 1"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800" alt="View 2"></div>
-      <div class="slide"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800" alt="View 3"></div>
-    </div>
-
-    <div class="price-section">
-      <h3 class="shoe-name">Vintage Silhouette</h3>
-      <p class="shoe-info">Limited Edition • Size 40</p>
-      <span class="price-amount">$320.00</span>
-      <a href="https://wa.me/96171499263" class="buy-btn">Order via WhatsApp</a>
+      <h3 class="shoe-name">Classic Grey Edition</h3>
+      <p class="details">Limited Edition • Size 40</p>
+      <span class="shoe-price">$310.00</span>
+      <a href="https://wa.me/96171499263" class="buy-btn">Order on WhatsApp</a>
     </div>
   </div>
 
 </section>
 
 <footer>
-  © 2026 RARE STEPS | Luxury Footwear Curator
+  <div style="font-family: 'Playfair Display', serif; font-size: 20px; letter-spacing: 5px; margin-bottom: 20px;">RARE STEPS</div>
+  <p style="font-size: 11px; letter-spacing: 2px; color: var(--gray);">PREMIUM SNEAKER ARCHIVE</p>
 </footer>
+
+<script>
+  /* --- JAVASCRIPT FOR SIDEBAR --- */
+  function openNav() {
+    document.getElementById("mySidebar").style.width = "280px";
+  }
+
+  function closeNav() {
+    document.getElementById("mySidebar").style.width = "0";
+  }
+</script>
 
 </body>
 </html>
