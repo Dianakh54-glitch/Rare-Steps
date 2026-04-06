@@ -2,149 +2,243 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Rare Steps</title>
+  <title>RARE STEPS | Curated Luxury Footwear</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #fff0f5;
-      color: #222;
+    :root {
+      --primary-gold: #c5a059; /* Sophisticated muted gold */
+      --deep-charcoal: #1a1a1a;
+      --soft-cream: #f9f7f2;
+      --white: #ffffff;
     }
 
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      background: var(--soft-cream);
+      color: var(--deep-charcoal);
+      line-height: 1.6;
+    }
+
+    /* Elegant Thin Header */
     header {
-      background: linear-gradient(90deg, #ff4da6, #ff99cc);
-      padding: 20px;
+      background: var(--white);
+      padding: 30px 20px;
       text-align: center;
-      color: white;
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: 1px;
+      text-transform: uppercase;
+      letter-spacing: 6px;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      border-bottom: 1px solid #eee;
     }
 
     nav {
       text-align: center;
-      padding: 10px;
-      background: white;
+      padding: 15px;
+      background: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #eee;
     }
 
     nav a {
-      margin: 0 15px;
+      margin: 0 20px;
       text-decoration: none;
-      color: #ff4da6;
-      font-weight: 500;
+      color: var(--deep-charcoal);
+      font-weight: 400;
+      font-size: 13px;
+      letter-spacing: 2px;
+      transition: color 0.3s ease;
     }
 
+    nav a:hover {
+      color: var(--primary-gold);
+    }
+
+    /* Hero Section with Luxury Feel */
     .hero {
       text-align: center;
-      padding: 50px 20px;
+      padding: 100px 20px;
+      background: linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)), 
+                  url('https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&q=80&w=1500') no-repeat center/cover;
     }
 
     .hero h1 {
-      font-size: 36px;
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 700;
       margin-bottom: 10px;
+      font-style: italic;
     }
 
     .hero p {
-      color: #555;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: #444;
     }
 
     .btn {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #ff4da6;
-      color: white;
-      border-radius: 25px;
+      padding: 18px 40px;
+      background: var(--deep-charcoal);
+      color: var(--white);
       text-decoration: none;
-      font-weight: 500;
+      font-weight: 600;
+      font-size: 12px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      border: 1px solid var(--deep-charcoal);
     }
 
+    .btn:hover {
+      background: transparent;
+      color: var(--deep-charcoal);
+    }
+
+    /* Curated Product Grid */
     .products {
-      padding: 40px 20px;
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
       text-align: center;
     }
 
     .products h2 {
-      margin-bottom: 30px;
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 50px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
     }
 
     .product-card {
-      background: white;
-      border-radius: 15px;
-      padding: 15px;
-      margin: 15px;
-      display: inline-block;
-      width: 250px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      background: var(--white);
+      padding: 0;
+      transition: transform 0.4s ease;
+      border-bottom: 2px solid transparent;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      border-bottom: 2px solid var(--primary-gold);
     }
 
     .slider {
       width: 100%;
+      height: 350px;
       overflow: hidden;
-      border-radius: 10px;
+      background: #f2f2f2;
     }
 
     .slider img {
       width: 100%;
-      border-radius: 10px;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
     }
 
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .product-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin: 20px 0 5px;
+    }
+
+    .product-card p {
+      font-size: 14px;
+      color: #888;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Sophisticated Footer */
     footer {
       text-align: center;
-      padding: 20px;
-      background: #ff4da6;
-      color: white;
-      margin-top: 40px;
+      padding: 60px 20px;
+      background: var(--deep-charcoal);
+      color: var(--white);
+      margin-top: 80px;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .footer-wa {
+      color: var(--primary-gold);
+      text-decoration: none;
+      display: block;
+      margin-top: 10px;
     }
   </style>
 </head>
 
 <body>
 
-<header>Rare Steps 👟💗</header>
+<header>RARE STEPS</header>
 
 <nav>
-  <a href="#home">Home</a>
-  <a href="#products">Shoes</a>
+  <a href="#home">COLLECTION</a>
+  <a href="#products">ARCHIVE</a>
+  <a href="https://wa.me/96171499263">INQUIRIES</a>
 </nav>
 
 <section class="hero" id="home">
-  <h1>Rare. Clean. Yours.</h1>
-  <p>I sell lightly used & rare sneakers you won’t find everywhere.</p>
+  <h1>Timeless. Rare. Authenticated.</h1>
+  <p>An exclusive curation of pre-loved luxury and rare-edition footwear for the modern collector.</p>
 
   <a class="btn" href="https://wa.me/96171499263" target="_blank">
-    Order on WhatsApp
+    Book a Private Viewing
   </a>
 </section>
 
 <section class="products" id="products">
-  <h2>Available Shoes</h2>
+  <h2>The Current Edit</h2>
 
-  <div class="product-card">
-    <div class="slider">
-      <img src="shoe1.jpg">
+  <div class="product-grid">
+    <div class="product-card">
+      <div class="slider">
+        <img src="https://images.unsplash.com/photo-1584735175315-9d58238a06c4?auto=format&fit=crop&q=80&w=600" alt="Nike Jordan">
+      </div>
+      <h3>Air Jordan 1 Retro</h3>
+      <p>Pristine Condition • Size 38</p>
     </div>
-    <h3>Nike Air Jordan</h3>
-    <p>Lightly used • Size 38</p>
-  </div>
 
-  <div class="product-card">
-    <div class="slider">
-      <img src="shoe2.jpg">
+    <div class="product-card">
+      <div class="slider">
+        <img src="https://images.unsplash.com/photo-1600832248537-47c9af48485c?auto=format&fit=crop&q=80&w=600" alt="Adidas Samba">
+      </div>
+      <h3>Adidas Samba 'Archive'</h3>
+      <p>Limited Release • Size 37</p>
     </div>
-    <h3>Adidas Samba</h3>
-    <p>Rare piece • Size 37</p>
-  </div>
 
+    <div class="product-card">
+      <div class="slider">
+        <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&q=80&w=600" alt="Designer Shoe">
+      </div>
+      <h3>Vintage Silhouette</h3>
+      <p>Rare Find • Size 39</p>
+    </div>
+  </div>
 </section>
 
 <footer>
-  © 2026 Rare Steps — DM on WhatsApp to order 💗
+  <div>© 2026 RARE STEPS COLLECTIVE</div>
+  <a href="https://wa.me/96171499263" class="footer-wa">SECURE VIA WHATSAPP CONCIERGE</a>
 </footer>
 
 </body>
